@@ -21,3 +21,5 @@
 - Run <code>npm run watch</code>
 - Run <code>php artisan serve</code>
 - Go to http://127.0.0.1:8000/
+
+<a href="https://developer.bka.sh/docs">Bkash Official Documentation</a>
