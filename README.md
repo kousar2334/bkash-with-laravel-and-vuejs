@@ -1,5 +1,4 @@
-<h1 align="center">Bkash Payment with Laravel and Vuejs</a></h1>
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://www.google.com/search?q=nagad+and+laravel&client=ubuntu&hs=tR1&sxsrf=AOaemvKo2hjO_Rnxb8lKq1TwCZmJ2OfADQ:1640799708921&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjFubCex4n1AhXZUGwGHW69CNcQ_AUoAnoECAEQBA&biw=1920&bih=960&dpr=1#imgrc=q8yHwi_HELUSfM" width="400"></a></p>
+![bkash](https://user-images.githubusercontent.com/23190775/167891034-698eafcb-7ff0-443b-b511-8ea8275e7b84.png)
 
 ## Requirements
 
@@ -9,7 +8,19 @@
 -   Password
 
 ## Build Setup
+- Clone your project
+- Go to the folder application using cd command on your cmd or terminal
+- Run <code>composer install</code> on your cmd or terminal
+- Copy .env.example file to .env on the root folder. You can type <code>copy .env.example .env</code> if using command prompt Windows or <code>cp .env.example .env</code> if using terminal, Ubuntu
+- Run <code>php artisan key:generate</code>
+- Go to the <code>app/Http/Controllers/Api/BkashController</code> and change flowing values
+    <br><code>$app_key = "";</code>
+    <br><code>$app_secret = ""; </code>
+    <br><code>$username = "";</code>
+    <br><code>$password = "";</code><br>
+- Run <code>npm install</code>
+- Run <code>npm run watch</code>
+- Run <code>php artisan serve</code>
+- Go to http://127.0.0.1:8000/
 
-# install dependencies
-
-$ yarn install
+<a href="https://developer.bka.sh/docs">Bkash Official Documentation</a>
