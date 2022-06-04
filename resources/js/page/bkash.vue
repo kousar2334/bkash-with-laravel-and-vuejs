@@ -40,6 +40,7 @@ export default {
 			axios
 				.post("/api/bkash-payment-token-create", {
 					order_code: this.invoiceId,
+					amount: this.amount,
 				})
 				.then(function (response) {
 					if (response.data.success) {
@@ -52,8 +53,6 @@ export default {
 		initBkash(resdata) {
 			//Pay Amount
 			let amount = this.amount;
-			//Authorization Token
-			let token = resdata.authToken.id_token;
 			let invoiceNumber = this.invoiceId;
 			let paymentID = null;
 			//Init bKash
@@ -69,8 +68,6 @@ export default {
 				createRequest() {
 					axios
 						.post("/api/bkash-create-payment-request", {
-							token: token,
-							amount: amount,
 							merchantInvoiceNumber: invoiceNumber,
 						})
 						.then(function (response) {
@@ -95,7 +92,6 @@ export default {
 					axios
 						.post("/api/bkash-execute-payment-request", {
 							paymentID: paymentID,
-							token: token,
 						})
 						.then(function (response) {
 							let result = response.data.data;

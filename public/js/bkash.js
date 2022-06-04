@@ -2103,7 +2103,8 @@ var axios = (__webpack_require__(/*! axios */ "./node_modules/axios/index.js")["
     getBkashToken: function getBkashToken() {
       var self = this;
       axios.post("/api/bkash-payment-token-create", {
-        order_code: this.invoiceId
+        order_code: this.invoiceId,
+        amount: this.amount
       }).then(function (response) {
         if (response.data.success) {
           self.initBkash(response.data.result);
@@ -2113,9 +2114,7 @@ var axios = (__webpack_require__(/*! axios */ "./node_modules/axios/index.js")["
     //Init bKash payment
     initBkash: function initBkash(resdata) {
       //Pay Amount
-      var amount = this.amount; //Authorization Token
-
-      var token = resdata.authToken.id_token;
+      var amount = this.amount;
       var invoiceNumber = this.invoiceId;
       var paymentID = null; //Init bKash
 
@@ -2130,8 +2129,6 @@ var axios = (__webpack_require__(/*! axios */ "./node_modules/axios/index.js")["
         //Payment create
         createRequest: function createRequest() {
           axios.post("/api/bkash-create-payment-request", {
-            token: token,
-            amount: amount,
             merchantInvoiceNumber: invoiceNumber
           }).then(function (response) {
             var data = response.data.data;
@@ -2153,8 +2150,7 @@ var axios = (__webpack_require__(/*! axios */ "./node_modules/axios/index.js")["
         //Payment Execute
         executeRequestOnAuthorization: function executeRequestOnAuthorization() {
           axios.post("/api/bkash-execute-payment-request", {
-            paymentID: paymentID,
-            token: token
+            paymentID: paymentID
           }).then(function (response) {
             var result = response.data.data;
 
